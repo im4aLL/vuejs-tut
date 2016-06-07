@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vuejs - Getting started</title>
+</head>
+<body>
+
+    <div id="app">
+        {{ message }}
+        <br>
+        <input v-model="message"> <button v-on:click="reverseMessage">Reverse Message</button>
+
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ul>
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
+<script>
+    new Vue({ 
+        el: '#app', 
+        data: { 
+            message: 'Hello Vue.js!',
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue.js' },
+                { text: 'Build Something Awesome' }
+            ] 
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('');
+            }
+        } 
+    });
+</script>
+    
+</body>
+</html>

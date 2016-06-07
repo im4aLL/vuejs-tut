@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vuejs - Todo lists</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo"> <button v-on:click="addTodo">Add new todo</button>
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }} <button v-on:click="removeTodo($index)">x</button>
+            </li>
+        </ul>
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
+<script>
+    new Vue({ 
+        el: '#app', 
+        data: { 
+            newTodo: '',
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue.js' },
+                { text: 'Build Something Awesome' }
+            ] 
+        },
+        methods: {
+            addTodo: function () {
+                this.todos.push({ text: this.newTodo });
+                this.newTodo = '';
+            },
+            removeTodo: function (index) {
+                this.todos.splice(index, 1);
+            }
+        } 
+    });
+</script>
+    
+</body>
+</html>
